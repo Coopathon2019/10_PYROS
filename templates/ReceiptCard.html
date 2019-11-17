@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>食譜卡</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="{{ url_for('static', filename='js/receipt.js') }}"></script>
+</head>
+<body>
+<div class="container">
+	<form>
+		<input class="search" type="text" placeholder="搜尋健康菜餚" onfocus="this.placeholder=''" onblur="this.placeholder='搜尋健康菜餚'" id="q">
+	</form>
+	{% for i in receipt %}
+	<div class="reciept-grid-box-info">
+			<p style="text-align: center;"><img src="{{ receipt[i][0] }}" class="dish-image" align="center"></p>
+			<p>
+				{{ i }}<br>
+				{{ receipt[i][1] }}大卡<br>
+				1人分<br>
+				製作難易度<br>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star-half-o"></i>
+				<i class="fa fa-star-o"></i>
+			</p>
+	</div>
+	<div class="reciept-grid">
+		<div class="reciept-grid-detail-btn">
+		<form action="/cartlories/dishdetail" method="GET">
+			<input type="hidden" name="dishname" value="{{ i }}">
+			<input type="hidden" name="nop" value="1">
+			<button class="btn-green-border" id="dishdetail">查看食譜詳情</button>
+		</form>
+		</div>
+		<div class="share">
+			<button class="btn-green-border" id="sharedish-{{ i }}" onclick="share(this)">分享</button>
+		</div>
+		<div class="like">
+			<button class="btn-grey" id="likedish-{{ i }}" onclick="addToFavorite(this)"><i class="fa fa-heart-o" style="color: #888888;"></i>&nbsp;收藏</button>
+		</div>
+		<div class="reciept-grid-addtobasket-btn">
+			<button class="btn-green-filled" value="加入菜籃" id="addtobasket-{{ i }}" onclick="addToBasket(this)">加入菜籃</button>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
+<script>
+  var vConsole = new VConsole();
+</script>
+</body>
+</html>

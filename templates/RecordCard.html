@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>記錄卡</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/record.js') }}"></script>
+</head>
+<body style="background-color: #f2f2f2">
+<div class="container">
+<form id="recordForm" method="POST">
+    <i class="fa fa-calendar" style="color: #11b36f; background-color: white"></i>
+	<input type="date" id="recordDate" name="recordDate" style="border-color: white;
+    background: white; font-size: 4vw; height: 5vw;" />
+    <input type="hidden" name="userid" id="userid" value="">
+    <p style="font-size: 4vw;">食物</p>
+        <table width="100%" style="border:none; margin-bottom: 5%;">
+            <colgroup>
+                <col style="width: 33.3%;" />
+                <col style="width: 33.3%;" />
+                <col style="width: 33.3%;" />
+            </colgroup>
+            <tr>
+                <td colspan="2"><input class="food" type="text" name="foodname" id="foodname" placeholder="建議一次輸入一種食物喔！" onfocus="this.placeholder=''" onblur="this.placeholder='建議一次輸入一種食物喔！'"></td>
+                <td rowspan="2">
+                    <label for="foodimg">
+                    <div class="food-img-upload">
+                        可以上傳<br>自己的美食照
+                    </div>
+                    </label>
+                    <input type="file" name="foodimg" id="foodimg" accept="image/*" style="display: none;">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p style="font-size: 4vw;">卡路里</p>
+    <input class="calories" type="text" name="calories" id="calories" placeholder="一定要認真記錄卡路里喔！" onfocus="this.placeholder=''" onblur="this.placeholder='一定要認真記錄卡路里喔！'">卡
+                </td>
+            </tr>
+        </table>
+</form>
+</div>
+<hr color="#11b36f" width="100%">
+<p align="center">
+<input class="save" type="submit" name="save" form="recordForm" value="儲存">
+</p>
+<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+<script type="text/javascript">
+    document.getElementById("recordDate").valueAsDate = new Date();
+    document.getElementById("userid").value = liff.getProfile().userId;
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
+<script>
+  var vConsole = new VConsole();
+</script>
+</body>
+</html>

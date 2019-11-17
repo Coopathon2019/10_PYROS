@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>買菜卡</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/purchase.js') }}"></script>
+</head>
+<body>
+<div class="container">
+<div class="purchase-grid-container">
+	<div class="cardtitle">今天吃什麼？</div>
+	<button class="share" onclick="shareMeal(this)">分享</button>
+	<button class="pay" onclick="payCart(this)" id="pay">來結帳</button>
+</div>
+<table width="100%" cellspacing="5" style="margin-top: 5%; margin-bottom: 5%;" id="tab-dishlist">
+    <colgroup>
+        <col style="width: 25%;" />
+        <col style="width: 25%;" />
+        <col style="width: 25%;" />
+        <col style="width: 25%;" />
+    </colgroup>
+    <tr id="tr-dish">
+    </tr>
+</table>
+	<div class="ingredients">
+    	<p style="text-align: center">食材清單</p>
+        <table width="100%" cellspacing="5" style="border-bottom: 3em;" id="tab-ingredients">
+            <colgroup>
+                <col style="width: 25%;" />
+                <col style="width: 25%;" />
+                <col style="width: 25%;" />
+                <col style="width: 25%;" />
+            </colgroup>
+            <tr>
+                <td colspan="2"><input type="checkbox" class="btn-ingredient-check" id="1"><label for="1" class="checkbox-label"></label>豆腐</td>
+                <td style="text-align: right;">1份</td>
+                <td style="text-align: center; color: #ee5265">已買</td>
+            </tr>
+        </table>
+    	<br>
+    	<p style="margin-left: 2.5%; color: #11b36f">調味料</p>
+    	<hr color="#11b36f" width="95%">
+        <table width="100%" cellspacing="5" style="border-bottom: 3em;">
+            <colgroup>
+                <col style="width: 25%;" />
+                <col style="width: 25%;" />
+                <col style="width: 25%;" />
+                <col style="width: 25%;" />
+            </colgroup>
+            <tr>
+                <td colspan="2"><input type="checkbox" class="btn-ingredient-check" id="2"><label for="2" class="checkbox-label"></label>醬油</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="checkbox" class="btn-ingredient-check" id="3"><label for="3" class="checkbox-label"></label>鹽巴</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
+<script>
+  var vConsole = new VConsole();
+</script>
+</body>
+</html>

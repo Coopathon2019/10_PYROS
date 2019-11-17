@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html style="scroll-behavior: smooth;">
+<head>
+	<title>食譜卡</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/receipt.js') }}"></script>
+</head>
+<body>
+<div class="dish-detail-header" id="detailheader">
+	<div class="dish-header-grid">
+		<div class="dish-name-header" id="{{ dishname }}">{{ dishname }}</div>
+		<button class="btn-green-border" id="sharedish">分享</button>
+		<button class="btn-grey" id="likedish-{{dishname}}" onclick="addToFavorite(this)"><i class="fa fa-heart-o" style="color: #888888;"></i>&nbsp;收藏</button>
+	</div>
+	<div class="dish-header-grid-3">
+		<div style="grid-column-start: 1; grid-column-end: 2;">
+			<input type="number" name="people" style="border: 0.3vw solid black; border-radius: 1.2vw; height: 6vw; width: 50%; color: #11b36f; text-align: center; font-size: 3vw;" min="1" value="{{ people }}">&nbsp;人份
+		</div>
+		<button class="btn-recalculate" onclick="">重新計算份量</button>
+	</div>
+	<hr style="color: black;">
+	<div class="navbar-dish">
+		<a class="active" href="#amount">食材份量</a>
+		<a href="#nutrition">營養價值</a>
+		<a href="#step">製作步驟</a>
+	</div>
+</div>
+<div class="container" style="margin-top: 37.5%; margin-bottom: 15%;">
+	<img src="{{ dish_info['photo'] }}.jpg" style="width: 100%;">
+	<p>{{ people }}人份食材</p>
+	<div class="container-blank" style="border: white; border-radius: 1.5vw;">
+		<table width="100%" cellspacing="8" style="border-bottom: 3em; margin-left: 5% margin-top: 5%; margin-right: 5%;">
+            <colgroup>
+                <col style="width: 47.5%;" />
+                <col style="width: 47.5%;" />
+            </colgroup>
+            {% for i in ingredients %}
+            <tr>
+                <td>{{ i }}</td>
+                <td style="text-align: right;">{{ ingredients[i] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <!---
+    	<p style="margin-left: 2.5%; color: #11b36f; font-weight: bold;">調味料</p>
+    	<hr color="#11b36f" width="95%">
+    	<table width="100%" cellspacing="8" style="border-bottom: 3em; margin-left: 5% margin-top: 5%; margin-right: 5%;">
+            <colgroup>
+                <col style="width: 47.5%;" />
+                <col style="width: 47.5%;" />
+            </colgroup>
+            <tr>
+                <td>醬油</td>
+                <td style="text-align: right;">很多</td>
+            </tr>
+            <tr>
+                <td>辣油</td>
+                <td style="text-align: right;">超多</td>
+            </tr>
+        </table>
+        !-->
+	</div>
+	<p id="amount">{{ people }}人份</p>
+	<div class="container-blank" style="border: white; border-radius: 1.5vw;" id="nutrition">
+		<table width="100%" cellspacing="8" style="border-bottom: 3em; margin-left: 5% margin-top: 5%; margin-right: 5%;">
+            <colgroup>
+                <col style="width: 47.5%;" />
+                <col style="width: 47.5%;" />
+            </colgroup>
+            {% for i in dish_info['nutrition'] %}
+            <tr>
+                <td>{{ i }}</td>
+                <td style="text-align: right;">{{ dish_info['nutrition'][i] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+	</div>
+	<p style="text-align: center;">製作步驟</p>
+	<p style="text-align: center;">
+        <span style="display: inline-block; border-top: 0.5vw solid; padding-top: 2vw; font-size: 3vw;">
+            難易度
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+            <i class="fa fa-star-o"></i>
+        </span>
+    </p>
+	<div class="container-blank" id="step">
+    {% for i in steps %}
+		<p style="text-align: center;"><span style="display: inline-block; border-bottom: 0.5vw solid #11b36f; font-size: 3.5vw; color: #11b36f">STEP {{ i }}</span></p>
+        <p style="margin-left: 2.5%; margin-right: 2.5%;">
+            {{ steps[i][1] }}
+        </p>
+        <p style="text-align: center;">
+            <img src="{{ steps[i][0] }}.jpg" style="margin: 2.5%; width: 95%;">
+        </p>
+    {% endfor %}
+	</div>
+</div>
+<div class="footer" id="detailfooter">
+	<button class="btn-green-filled" id="addtobasket" style="margin-top: 1%;">加入買菜卡</button>
+	<div style="display: flex; text-align: center; align-items: center; justify-content: center; margin: 3%; font-size: 3vw;">Powered by PYROS 派洛斯</div>
+</div>
+<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
+<script>
+  var vConsole = new VConsole();
+</script>
+</body>
+</html>

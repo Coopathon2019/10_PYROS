@@ -1,0 +1,311 @@
+body {
+    background: #f2f2f2;
+    font-size: 4vw;
+    font-family: "Helvetica Neue";
+}
+.container {
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    overflow: auto;
+}
+::placeholder {
+    color: #888888;
+};
+/* Style for record cards */
+input[type="date"] {
+    border-color: white;
+    background: white;
+    font-size: 3vw;
+    height: 5vw;
+    width: 25%;
+}
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+input.food {
+    border-style: solid;
+    border-color: white;
+    border-radius: 1.5vw;
+    background: white;
+    color: #11b36f;
+    font-size: 3vw;
+    height: 5vw;
+    width: 90%;
+}
+input.calories {
+    background: white;
+    border-style: solid;
+    border-color: white;
+    border-radius: 1.5vw;
+    font-size: 3vw;
+    height: 5vw;
+    width: 80%;
+}
+input.save {
+    background: #f2f2f2;
+    color: #11b36f;
+    border-style: none;
+    text-align: center;
+    font-size: 4vw;
+}
+.food-img-upload {
+    display: flex;
+    width: 28vw; 
+    height: 28vw; 
+    font-size: 3vw; 
+    border: 0.5vw solid #888888; 
+    border-radius: 1.5vw; 
+    background: #888888; 
+    color: white; 
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.table-record {
+    
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+    width: 100%;
+}
+
+/* Style for purchase cards */
+.purchase-grid-container {
+    background-color: #f2f2f2;
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+}
+div.cardtitle {
+    display: flex;
+    color: #11b36f;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    font-weight: bold;
+    align-items: center;
+}
+button.share {
+    border: 0.5vw solid #11b36f;
+    border-radius: 1.5vw;
+    background-color: #f2f2f2;
+    color: #11b36f;
+    height: 8vw;
+    width: 100%;
+    font-size: 3vw;
+}
+button.pay {
+    border: none;
+    border-radius: 1.5vw;
+    background-color: #11b36f;
+    color: white;
+    height: 8vw;
+    width: 100%;
+    font-size: 3vw;
+}
+.purchase-dish-name {
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+div.ingredients {
+    background: white;
+    border-top: 2px solid black;
+}
+.ingredient-check {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+input[type=checkbox] {
+    display: none;
+}
+input[type=checkbox] + label {
+    display: inline-block;
+    border: 0.5vw solid #11b36f;
+    border-radius: 1.5vw;
+    background-color: white;
+    width: 5vw;
+    height: 5vw;
+    vertical-align: middle;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+input[type=checkbox]:checked + label {
+    display: inline-block;
+    border: 0.5vw solid #11b36f;
+    border-radius: 1.5vw;
+    background-color: #11b36f;
+    width: 5vw;
+    height: 5vw;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+input[type=checkbox]:checked + .checkbox-label:before {
+    content: "\f00c";
+    font-family: FontAwesome;
+    padding-left: 10%;
+    color: white;
+}
+.sauce {
+    padding-left: 50px;
+    padding-right: 50px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.sauce-header {
+    border-bottom: 2px solid #11b36f;
+}
+/* Style for reciept cards */
+input.search {
+    border: 0.5vw solid #11b36f;
+    height: 8vw;
+    border-radius: 10vw;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 3vw;
+}
+.reciept-grid {
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+}
+.reciept-grid-box-info {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background: white;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+    width: 100%;
+}
+.dish-image {
+    height: 25vw;
+    width: 80%;
+    margin: 0.5vw 0.5vw 0.5vw 0.5vw;
+    vertical-align: middle;
+}
+.reciept-grid-detail-btn {
+    background: white;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    height: 8vw;
+    width: 100%;
+    font-size: 3vw;
+}
+.reciept-grid-addtobasket-btn {
+    background: #11b36f;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    border-radius: 1.5vw;
+    height: 8vw;
+    width: 100%;
+    font-size: 3vw;
+}
+.btn-green-border {
+    background: white;
+    color: #11b36f;
+    border: 0.5vw solid #11b36f;
+    border-radius: 1.5vw;
+    height: 8vw;
+    width: 100%;
+    font-size: 3vw;
+}
+.btn-grey {
+    background: white;
+    color: #888888;
+    border: 0.5vw solid #888888;
+    border-radius: 1.5vw;
+    height: 8vw;
+    width: 100%;
+    font-size: 3vw;
+}
+.btn-green-filled {
+    background: #11b36f;
+    border-style: none;
+    color: white;
+    border-radius: 1.5vw;
+    height: 8vw;
+    width: 100%;
+    font-size: 3vw;
+}
+/* Details of dish */
+.dish-detail-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    width: 100%;
+    margin: 0% 0% 0% 0%;
+    overflow: hide;
+}
+.dish-header-grid {
+    background-color: white;
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+    margin-left: 3%;
+    margin-right: 5%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+.dish-header-grid-3 {
+    background-color: white;
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 5px;
+    margin-left: 3%;
+    margin-right: 5%;
+    margin-top: 3%;
+    margin-bottom: 5%;
+}
+.dish-name-header {
+    display: flex;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    align-items: center;
+    font-weight: bold;
+}
+.btn-recalculate {
+    border: none;
+    background: white;
+    color: #11b36f;
+    font-size: 3vw;
+}
+.navbar-dish {
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+}
+.navbar-dish a {
+    float: left;
+    text-decoration: none;
+    color: black;
+    display: block;
+    width: 33.3%;
+    text-align: center;
+    border-bottom: 0.3vw solid transparent;
+    padding-bottom: 1vw;
+    font-size: 3vw;
+}
+.navbar-dish a.active {
+    border-bottom: 0.3vw solid #11b36f;
+}
+.container-blank {
+    background: white;
+    border: white; 
+    border-radius: 1.5vw;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    overflow: hide;
+    background: #f2f2f2;
+}
